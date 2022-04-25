@@ -10,7 +10,9 @@ export const useFilterStore = defineStore({
   getters: {},
   actions: {
     setFilter(filter) {
-      this.filter = filter;
+      this.search = filter.search;
+      this.location = filter.location;
+      this.isFullTime = filter.isFullTime;
       useJobsStore().filterJobs(filter);
     },
   },
@@ -20,31 +22,28 @@ export const useJobsStore = defineStore({
   id: "jobs",
   state: () => ({
     jobs: [],
-    loading: false,
+    job: null,
   }),
   getters: {
     getJobs: (state) => state.jobs,
-    getLoading: (state) => state.loading,
   },
   actions: {
     async fetchJobs() {
-      this.loading = true;
       await fetch("http://localhost:4000/data")
         .then((res) => res.json())
         .then((data) => {
           this.jobs = data;
-          this.loading = false;
         });
     },
     async filterJobs(filter) {
-      this.loading = true;
-
       await this.fetchJobs();
 
       var filteredJobs = this.jobs;
       filteredJobs = this.jobs.filter((job) => {
         if (filter.search && filter.search !== "") {
-          if (job.company.toLowerCase().includes(filter.search.toLowerCase())) {
+          if (
+            job.description.toLowerCase().includes(filter.search.toLowerCase())
+          ) {
             return true;
           }
         } else if (filter.search === "") {
@@ -69,7 +68,7 @@ export const useJobsStore = defineStore({
       });
 
       filteredJobs = filteredJobs.filter((job) => {
-        if (filter.fullTime) {
+        if (filter.isFullTime) {
           if (job.contract === "Full Time") {
             return true;
           }
@@ -79,6 +78,9 @@ export const useJobsStore = defineStore({
       });
 
       this.jobs = filteredJobs;
+    },
+    async getJob(id) {
+      this.job = this.jobs.find((job) => job.id === parseInt(id));
     },
   },
 });

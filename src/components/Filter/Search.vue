@@ -15,7 +15,9 @@
 <script setup>
 import SearhcIcon from "../icons/SearchIcon.vue";
 import { ref, computed } from "vue";
-const search = ref("");
+const props = defineProps(["modelValue"]);
+
+const search = ref(props.modelValue);
 </script>
 
 <style lang="scss" scoped>

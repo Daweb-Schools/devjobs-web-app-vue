@@ -10,7 +10,9 @@
 
 <script setup>
 import { ref } from "vue";
-const checked = ref(false);
+const props = defineProps(["modelValue"]);
+
+const checked = ref(props.modelValue);
 </script>
 
 <style lang="scss" scoped>

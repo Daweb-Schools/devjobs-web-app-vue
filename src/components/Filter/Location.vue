@@ -14,8 +14,9 @@
 <script setup>
 import { ref } from "vue";
 import LocationIcon from "../icons/LocationIcon.vue";
+const props = defineProps(["modelValue"]);
 
-const location = ref("");
+const location = ref(props.modelValue);
 </script>
 
 <style lang="scss" scoped>

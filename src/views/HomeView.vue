@@ -5,8 +5,7 @@ import JobItem from "../components/JobItem.vue";
 import { useJobsStore } from "@/stores/index.js";
 import { ref, computed, watch } from "vue";
 const jobsStore = useJobsStore();
-const jobs = ref([]);
-jobsStore.fetchJobs();
+const jobs = ref(jobsStore.jobs);
 const pageSize = ref(9);
 const page = ref(1);
 
@@ -51,49 +50,41 @@ async function loadMore() {
 </template>
 
 <style lang="scss" scoped>
-main {
-  max-width: 1440px;
+.contentWrapper {
+  max-width: 1100px;
   width: 100%;
-  margin: 0px auto;
-  height: fit-content;
-  background-color: transparent;
+  position: relative;
+  margin: 120px auto 0px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .contentWrapper {
-    max-width: 1100px;
+  .jobs-section {
+    max-width: 11100px;
     width: 100%;
-    position: relative;
-    margin: 120px auto 0px;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 65px 30px;
+    margin-top: 105px;
+    margin-bottom: 56px;
 
-    .jobs-section {
-      max-width: 11100px;
+    @media (max-width: 950px) {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 10px;
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      row-gap: 50px;
+      max-width: 500px;
       width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 65px 30px;
-      margin-top: 105px;
-      margin-bottom: 56px;
-
-      @media (max-width: 950px) {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 10px;
-      }
-
-      @media (max-width: 767px) {
-        grid-template-columns: 1fr;
-        row-gap: 50px;
-        max-width: 500px;
-        width: 100%;
-        margin: 57px auto 32px;
-      }
+      margin: 57px auto 32px;
     }
+  }
 
-    .load-more {
-      margin-bottom: 100px;
-    }
+  .load-more {
+    margin-bottom: 100px;
   }
 }
 </style>

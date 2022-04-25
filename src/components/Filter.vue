@@ -18,7 +18,6 @@ import { useFilterStore } from "@/stores/index.js";
 import { ref } from "vue";
 
 const filter = useFilterStore();
-
 const searchValue = ref(filter.search);
 const locationValue = ref(filter.location);
 const isFullTimeValue = ref(filter.isFullTime);
@@ -27,7 +26,7 @@ async function search() {
   filter.setFilter({
     search: searchValue.value,
     location: locationValue.value,
-    fullTime: isFullTimeValue.value,
+    isFullTime: isFullTimeValue.value,
   });
 }
 </script>

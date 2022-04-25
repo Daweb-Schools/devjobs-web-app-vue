@@ -4,14 +4,19 @@
       class="job-item-icon"
       :style="`background-color: ${job.logoBackground}`"
     >
-      <img :src="`/src${job.logo}`" alt="Scoot logo" />
+      <img :src="`/src${job.logo}`" :alt="`${job.comapny} logo`" />
     </div>
     <div class="job-item-info">
       <p>
         <span>{{ job.postedAt }}</span
         ><span>•</span><span>{{ job.contract }}</span>
       </p>
-      <h2 href="/details/1">{{ job.position }}</h2>
+      <RouterLink
+        class="details-link"
+        :to="{ name: 'details', params: { id: job.id } }"
+      >
+        {{ job.position }}
+      </RouterLink>
       <p>{{ job.company }}</p>
     </div>
     <h3>{{ job.location }}</h3>
@@ -57,11 +62,12 @@ const job = ref(props.job);
       }
     }
 
-    h2 {
+    .details-link {
       color: rgb(255, 255, 255);
       font-size: var(--font-size-heading-m);
       margin-bottom: 12px;
       cursor: pointer;
+      text-decoration: none;
     }
   }
   h3 {
