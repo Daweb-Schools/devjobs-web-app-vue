@@ -62,11 +62,10 @@ main {
     max-width: 1100px;
     width: 100%;
     position: relative;
-    margin: -50px auto 0px;
+    margin: 120px auto 0px;
     z-index: 1;
     display: flex;
     flex-direction: column;
-    -webkit-box-align: center;
     align-items: center;
 
     .jobs-section {

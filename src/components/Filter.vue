@@ -3,7 +3,9 @@
     <Search v-model="searchValue" />
     <Location v-model="locationValue" />
     <FullTime v-model="isFullTimeValue" />
-    <button @click="search" class="btn-primary" type="button">Search</button>
+    <button @click="search" class="btn-primary search-btn" type="button">
+      Search
+    </button>
   </form>
 </template>
 
@@ -14,6 +16,7 @@ import FullTime from "./Filter/FullTime.vue";
 
 import { useFilterStore } from "@/stores/index.js";
 import { ref } from "vue";
+
 const filter = useFilterStore();
 
 const searchValue = ref(filter.search);
@@ -41,14 +44,24 @@ async function search() {
   align-items: center;
   transition: background-color 0.3s ease 0s;
 
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   .filter-item {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
     gap: 16px;
     height: 100%;
-    padding: 0px 23px;
+    padding: 23px;
     border-right: 1px solid rgba(110, 128, 152, 0.2);
+
+    @media (max-width: 767px) {
+      border-right: none;
+    }
 
     .search-input {
       border: none;
@@ -60,6 +73,16 @@ async function search() {
       height: 100%;
       width: 100%;
       outline: none;
+    }
+  }
+
+  .search-btn {
+    max-width: 100%;
+    @media (max-width: 767px) {
+      margin: 23px;
+      display: block;
+      // margin: 0;
+      width: calc(100% - 46px);
     }
   }
 }

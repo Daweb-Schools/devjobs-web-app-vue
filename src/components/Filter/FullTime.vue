@@ -4,7 +4,7 @@
     @click="(checked = !checked), $emit('update:modelValue', checked)"
   >
     <div class="checkbox" :class="{ checked: checked }"></div>
-    <p>Full Time</p>
+    <p>Full Time Only</p>
   </div>
 </template>
 
@@ -24,6 +24,12 @@ const checked = ref(false);
   align-items: center;
   gap: 14px;
   margin-left: 32px;
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+    padding: 23px;
+    margin-left: 0;
+  }
 
   .checkbox {
     height: 24px;

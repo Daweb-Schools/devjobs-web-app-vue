@@ -15,7 +15,6 @@
 <script setup>
 import SearhcIcon from "../icons/SearchIcon.vue";
 import { ref, computed } from "vue";
-
 const search = ref("");
 </script>
 

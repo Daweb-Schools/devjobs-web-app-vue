@@ -29,6 +29,7 @@ const location = ref("");
   }
   @media (max-width: 767px) {
     min-width: 140px;
+    max-width: 100%;
     padding: 0px;
   }
 }
