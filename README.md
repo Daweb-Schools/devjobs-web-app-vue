@@ -1,6 +1,13 @@
-# devjobs-web-app-vue
+# 💻 Devjobs Web Wpp Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Devjobs web app challenge solution with VUE 3
+
+![image](https://user-images.githubusercontent.com/35883748/165107067-1beb9172-f02f-4e33-88f6-a1207e3c7c5d.png)
+![image](https://user-images.githubusercontent.com/35883748/165107132-226f65d4-a4e4-4ecb-ab0a-13b8fec6e04b.png)
+
+
+## NOTE
+to run the server run this command first: `npm run data` 
 
 ## Recommended IDE Setup
 
