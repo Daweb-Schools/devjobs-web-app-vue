@@ -35,7 +35,10 @@ async function loadMore() {
     <div class="contentWrapper">
       <Filter />
       <section class="jobs-section">
-        <JobItem v-for="job in paginatedJobs" :key="job.id" :job="job" />
+        <p v-if="paginatedJobs.length == 0">No jobs found.</p>
+        <transition-group name="list-animation">
+          <JobItem v-for="job in paginatedJobs" :key="job.id" :job="job" />
+        </transition-group>
       </section>
       <button
         class="load-more btn-primary"
@@ -68,6 +71,16 @@ async function loadMore() {
     gap: 65px 30px;
     margin-top: 105px;
     margin-bottom: 56px;
+
+    .list-animation-enter,
+    .list-animation-leave-to {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+
+    .list-animation-leave-active {
+      position: absolute;
+    }
 
     @media (max-width: 950px) {
       grid-template-columns: repeat(2, 1fr);

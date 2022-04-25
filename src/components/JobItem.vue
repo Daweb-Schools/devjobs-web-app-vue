@@ -36,6 +36,7 @@ const job = ref(props.job);
   border-radius: 6px;
   padding: 32px;
   transition: background-color 0.3s ease 0s;
+  transition: all 0.4s;
 
   .job-item-icon {
     width: 50px;

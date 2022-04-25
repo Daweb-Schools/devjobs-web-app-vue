@@ -5,7 +5,7 @@
     <input
       class="search-input"
       type="text"
-      placeholder="Filter by companies..."
+      placeholder="Filter by companies, names, des..."
       v-model="search"
       @input="$emit('update:modelValue', $event.target.value)"
     />
