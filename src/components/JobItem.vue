@@ -35,17 +35,13 @@ const job = ref(props.job);
   background-color: rgb(25, 32, 45);
   border-radius: 6px;
   padding: 32px;
-  transition: background-color 0.3s ease 0s;
-  transition: all 0.4s;
 
   .job-item-icon {
     width: 50px;
     height: 50px;
     border-radius: 15px;
     display: flex;
-    -webkit-box-align: center;
     align-items: center;
-    -webkit-box-pack: center;
     justify-content: center;
     margin-top: -57px;
   }
